@@ -7,6 +7,10 @@ Verifique se o palpite do usuario esta correto:
 Se estiver correto, o programa devera imprimir na tela “Parabens!!! Voce acertou!”
 Se o palpite for menor que o numero sorteado, devera imprimir “Voce chutou muito baixo! O valor correto e xx.” (onde xx e o numero sorteado).
 Se o palpite for maior que o numero sorteado, devera imprimir “Voce chutou muito alto! O valor correto e xx.” (onde xx e o numero sorteado).
+
+Desenvolva um programa semelhante ao anterior, so que com as seguintes diferencas:
+Se o palpite do usuario estiver incorreto, o programa devera imprimir a dica (“voce chutou muito baixo” ou “voce chutou muito alto”) sem mostrar o valor sorteado, incrementar o numero de tentativas e dar uma nova chance ate que ele consiga acertar o numero sorteado.
+Quando o usuario conseguir acertar o numero sorteado, o programa devera apresentar a mensagem de parabens e mostrar o numero de tentativas feitas pelo usuario ate acertar o numero.
 */
 
 #include <stdio.h>
@@ -30,17 +34,32 @@ void comparaPalpite(int resposta, int palpite)
     }
 }
 
-int main()
+int lePalpite()
 {
-    int numAleatorio = intRand(MIN, MAX);
     int palpite;
-    printf("Para debug, o numero é %d.\n", numAleatorio);
     do
     {
         printf("Informe seu palpite [1, 100]: ");
         palpite = lerInt();
     } while (palpite < 1 || palpite > 100);
-    comparaPalpite(numAleatorio, palpite);
+    return palpite;
+}
+
+int main()
+{
+    int numAleatorio = intRand(MIN, MAX);
+    int palpite;
+    int contador = 1;
+    printf("Para debug, o numero e %d.\n", numAleatorio);
+    palpite = lePalpite();
+    while (palpite != numAleatorio)
+    {
+        contador++;
+        comparaPalpite(numAleatorio, palpite);
+        palpite = lePalpite();
+    }
+    printf("Voce acertou!\n");
+    printf("Voce precisou de %d tentativas!\n", contador);
     manterTerminalAberto();
     return 0;
 }
