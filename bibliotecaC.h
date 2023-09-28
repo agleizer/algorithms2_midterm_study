@@ -7,5 +7,6 @@ int lerInt();
 int intRand(int min, int max);
 void populaVetorIntRand(int vetor[], int tamanho, int min, int max);
 void imprimeVetor(int vetor[], int tamanho);
+void zeraVetor(int vetor[], int tamanho);
 
 #endif

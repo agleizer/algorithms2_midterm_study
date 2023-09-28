@@ -58,5 +58,13 @@ void imprimeVetor(int vetor[], int tamanho)
     {
         printf(" %d", vetor[i]);
     }
-    printf("]\n");
+    printf(" ]\n");
+}
+
+void zeraVetor(int vetor[], int tamanho)
+{
+    for (int i = 0; i < tamanho; i++)
+    {
+        vetor[i] = 0;
+    }
 }
