@@ -36,7 +36,27 @@ int lerInt()
 int intRand(int min, int max)
 {
     int numero;
-    srand(time(NULL));                 // inicializa gerador randomico
+    // srand(time(NULL));                 // inicializa gerador randomico precisa estar em main onde essa funcao for chamada!
     numero = min + rand() % (max + 1); // // gera um número de 1 a 100 e atribui
     return numero;
+}
+
+// minha solucao, requer pausa entre cada iteracao....
+void populaVetorIntRand(int vetor[], int tamanho, int min, int max)
+{
+    int nada;
+    for (int i = 0; i < tamanho; i++)
+    {
+        vetor[i] = intRand(min, max);
+    }
+}
+
+void imprimeVetor(int vetor[], int tamanho)
+{
+    printf("[");
+    for (int i = 0; i < tamanho; i++)
+    {
+        printf(" %d", vetor[i]);
+    }
+    printf("]\n");
 }
